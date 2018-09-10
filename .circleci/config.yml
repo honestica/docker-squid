@@ -3,10 +3,13 @@ version: 2
 jobs:
   build_and_push:
     machine: true
-    environment:
-      - DOCKER_TAG: 3.5-${CIRCLE_WORKFLOW_ID}
     steps:
       - checkout
+      - run:
+          name: Update Define Environment Variable at Runtime
+          command: |
+            echo 'export DOCKER_TAG=3.5-${CIRCLE_WORKFLOW_ID}' >> $BASH_ENV
+            source $BASH_ENV
       - run: docker info
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker build -t honestica/squid:${DOCKER_TAG} .
