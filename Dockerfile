@@ -1,5 +1,5 @@
 
-FROM alpine:3.8.4
+FROM alpine:3.10.2
 
 MAINTAINER ops@lifen.fr
 
