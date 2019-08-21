@@ -11,7 +11,7 @@ jobs:
             echo 'export DOCKER_TAG=3.5-${CIRCLE_WORKFLOW_ID}' >> $BASH_ENV
             source $BASH_ENV
       - run: docker info
-      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
       - run: docker build -t honestica/squid:${DOCKER_TAG} .
       - run: docker run -d -p 23128:3128 honestica/squid:${DOCKER_TAG}; sleep 10
       - run: curl --retry 10 --retry-delay 5 -v -s -L -x http://127.0.0.1:23128 -o /dev/null https://www.google.com
@@ -21,4 +21,5 @@ workflows:
   version: 2
   common:
     jobs:
-      - build_and_push
+      - build_and_push:
+          context: org-global
