@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Update Define Environment Variable at Runtime
           command: |
-            echo 'export DOCKER_TAG=3.5-${CIRCLE_WORKFLOW_ID}' >> $BASH_ENV
+            echo 'export DOCKER_TAG=4-${CIRCLE_WORKFLOW_ID}' >> $BASH_ENV
             source $BASH_ENV
       - run: docker info
       - run: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
