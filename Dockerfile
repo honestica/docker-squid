@@ -4,6 +4,7 @@ FROM alpine:20200917
 MAINTAINER ops@lifen.fr
 
 RUN apk update \
+    && apk upgrade \
     && apk add squid \
     && rm -rf /var/cache/apk/*
 
