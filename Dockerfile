@@ -1,5 +1,5 @@
 
-FROM alpine:20200917
+FROM alpine:20201218
 
 MAINTAINER ops@lifen.fr
 
