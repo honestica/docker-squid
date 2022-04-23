@@ -17,7 +17,7 @@ jobs:
       - run: docker run -d -p 23128:3128 honestica/squid:${DOCKER_TAG}; sleep 10
       - run: curl --retry 10 --retry-delay 5 -v -s -L -x http://127.0.0.1:23128 -o /dev/null https://www.google.com
       - run: docker tag honestica/squid:${DOCKER_TAG} honestica/squid:${DOCKER_TAG_SEMVERSION}
-      - run: docker push honestica/squid:${DOCKER_TAG}
+#      - run: docker push honestica/squid:${DOCKER_TAG}
       - run: docker push honestica/squid:${DOCKER_TAG_SEMVERSION}      
 
 workflows:
